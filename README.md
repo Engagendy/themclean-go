@@ -57,6 +57,8 @@ Display name: **theMClean Go**
 
 Version: `1.0.0`
 
+Privacy Policy: https://github.com/Engagendy/themclean-go/blob/main/PRIVACY.md
+
 The review notes should clearly say:
 
 > theMClean Go only scans files and folders selected by the user through the Files picker. It does not scan iOS system caches, other apps, private app containers, or hidden operating system storage.

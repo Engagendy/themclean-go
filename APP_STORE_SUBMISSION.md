@@ -12,6 +12,9 @@
 - Platforms: iPhone and iPad
 - Version: 1.0.0
 - Build: 1
+- Support URL: https://github.com/Engagendy/themclean-go/issues
+- Marketing URL: https://github.com/Engagendy/themclean-go
+- Privacy Policy URL: https://github.com/Engagendy/themclean-go/blob/main/PRIVACY.md
 
 ## Promotional Text
 
@@ -87,4 +90,4 @@ The app does not collect analytics, account information, contact information, lo
 
 - Support URL: https://github.com/Engagendy/themclean-go/issues
 - Marketing URL: https://github.com/Engagendy/themclean-go
-- Privacy Policy URL: add the final hosted privacy policy URL before submission
+- Privacy Policy URL: https://github.com/Engagendy/themclean-go/blob/main/PRIVACY.md
