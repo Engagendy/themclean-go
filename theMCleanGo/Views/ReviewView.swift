@@ -1,28 +1,20 @@
 import SwiftUI
 
 struct ReviewView: View {
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @EnvironmentObject private var store: FileReviewStore
     @Binding var showingImporter: Bool
 
     var body: some View {
-        VStack(spacing: 0) {
-            ReviewHeader(showingImporter: $showingImporter)
-
-            if store.files.isEmpty {
-                EmptyReviewView(showingImporter: $showingImporter)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        Group {
+            if horizontalSizeClass == .compact {
+                CompactReviewView(showingImporter: $showingImporter)
             } else {
-                List(store.files) { file in
-                    FileRow(file: file) {
-                        store.toggleSelection(file)
-                    }
-                }
-                .listStyle(.plain)
+                RegularReviewView(showingImporter: $showingImporter)
             }
-
-            SelectionBar()
         }
         .navigationTitle("Review")
+        .navigationBarTitleDisplayMode(horizontalSizeClass == .compact ? .inline : .large)
         .toolbar {
             ToolbarItemGroup(placement: .primaryAction) {
                 Button {
@@ -38,6 +30,58 @@ struct ReviewView: View {
                 }
                 .disabled(store.files.isEmpty)
             }
+        }
+    }
+}
+
+private struct CompactReviewView: View {
+    @EnvironmentObject private var store: FileReviewStore
+    @Binding var showingImporter: Bool
+
+    var body: some View {
+        VStack(spacing: 0) {
+            if store.files.isEmpty {
+                ScrollView {
+                    EmptyReviewView(showingImporter: $showingImporter, compact: true)
+                }
+                .scrollIndicators(.hidden)
+            } else {
+                CompactSummaryBar()
+
+                List(store.files) { file in
+                    FileRow(file: file) {
+                        store.toggleSelection(file)
+                    }
+                }
+                .listStyle(.plain)
+            }
+
+            SelectionBar()
+        }
+    }
+}
+
+private struct RegularReviewView: View {
+    @EnvironmentObject private var store: FileReviewStore
+    @Binding var showingImporter: Bool
+
+    var body: some View {
+        VStack(spacing: 0) {
+            ReviewHeader(showingImporter: $showingImporter)
+
+            if store.files.isEmpty {
+                EmptyReviewView(showingImporter: $showingImporter, compact: false)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+            } else {
+                List(store.files) { file in
+                    FileRow(file: file) {
+                        store.toggleSelection(file)
+                    }
+                }
+                .listStyle(.plain)
+            }
+
+            SelectionBar()
         }
     }
 }
@@ -82,6 +126,7 @@ private struct ReviewHeader: View {
 
 private struct EmptyReviewView: View {
     @Binding var showingImporter: Bool
+    let compact: Bool
 
     var body: some View {
         VStack(alignment: .leading, spacing: 22) {
@@ -113,11 +158,26 @@ private struct EmptyReviewView: View {
             }
             .padding(.top, 8)
         }
-        .padding(.horizontal, 24)
-        .padding(.top, 34)
-        .padding(.bottom, 20)
+        .padding(.horizontal, compact ? 22 : 24)
+        .padding(.top, compact ? 22 : 34)
+        .padding(.bottom, compact ? 110 : 20)
         .frame(maxWidth: 620, alignment: .leading)
         .frame(maxWidth: .infinity, alignment: .topLeading)
+    }
+}
+
+private struct CompactSummaryBar: View {
+    @EnvironmentObject private var store: FileReviewStore
+
+    var body: some View {
+        HStack(spacing: 10) {
+            MetricView(title: "Files", value: "\(store.files.count)")
+            MetricView(title: "Selected", value: ByteCountFormatter.string(fromByteCount: store.selectedSize, countStyle: .file))
+            MetricView(title: "Stage", value: "\(store.stagedFiles.count)")
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 10)
+        .background(.bar)
     }
 }
 
