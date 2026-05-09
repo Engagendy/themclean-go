@@ -16,11 +16,15 @@ struct ReviewView: View {
         .navigationTitle("Review")
         .navigationBarTitleDisplayMode(horizontalSizeClass == .compact ? .inline : .large)
         .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                FilterMenu()
+            }
+
             ToolbarItemGroup(placement: .primaryAction) {
                 Button {
                     showingImporter = true
                 } label: {
-                    Label("Import", systemImage: "plus")
+                    Label("Scan", systemImage: "folder.badge.plus")
                 }
 
                 Button {
@@ -48,9 +52,13 @@ private struct CompactReviewView: View {
             } else {
                 CompactSummaryBar()
 
-                List(store.files) { file in
-                    FileRow(file: file) {
-                        store.toggleSelection(file)
+                List(store.filteredFiles) { file in
+                    NavigationLink {
+                        FilePreviewView(file: file)
+                    } label: {
+                        FileRow(file: file) {
+                            store.toggleSelection(file)
+                        }
                     }
                 }
                 .listStyle(.plain)
@@ -73,9 +81,13 @@ private struct RegularReviewView: View {
                 EmptyReviewView(showingImporter: $showingImporter, compact: false)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             } else {
-                List(store.files) { file in
-                    FileRow(file: file) {
-                        store.toggleSelection(file)
+                List(store.filteredFiles) { file in
+                    NavigationLink {
+                        FilePreviewView(file: file)
+                    } label: {
+                        FileRow(file: file) {
+                            store.toggleSelection(file)
+                        }
                     }
                 }
                 .listStyle(.plain)
@@ -107,7 +119,7 @@ private struct ReviewHeader: View {
                 Button {
                     showingImporter = true
                 } label: {
-                    Label("Choose Files", systemImage: "folder.badge.plus")
+                    Label("Scan", systemImage: "folder.badge.plus")
                 }
                 .buttonStyle(.borderedProminent)
                 .controlSize(.regular)
@@ -125,6 +137,7 @@ private struct ReviewHeader: View {
 }
 
 private struct EmptyReviewView: View {
+    @EnvironmentObject private var store: FileReviewStore
     @Binding var showingImporter: Bool
     let compact: Bool
 
@@ -137,22 +150,27 @@ private struct EmptyReviewView: View {
                 .background(.green.opacity(0.12), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
 
             VStack(alignment: .leading, spacing: 8) {
-                Text("Choose files to review")
+                Text("Scan files to review")
                     .font(.title2.bold())
-                Text("theMClean Go only reviews files and folders you select from the Files app.")
+                Text("Choose On My iPhone, On My iPad, Downloads, iCloud Drive, or another folder from Files.")
                     .font(.body)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
             }
 
-            Button("Choose Files") {
+            Text(store.lastScanSummary)
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
+
+            Button("Scan") {
                 showingImporter = true
             }
             .buttonStyle(.borderedProminent)
             .controlSize(.large)
 
             VStack(alignment: .leading, spacing: 12) {
-                OnboardingRow(icon: "folder", title: "Pick from Files", text: "Import a folder, Downloads area, or selected documents.")
+                OnboardingRow(icon: "folder", title: "Pick from Files", text: "Select On My iPhone, On My iPad, Downloads, or selected documents.")
                 OnboardingRow(icon: "line.3.horizontal.decrease.circle", title: "Review by size", text: "Sort through large files, archives, media, and documents.")
                 OnboardingRow(icon: "tray.and.arrow.down", title: "Use Stage first", text: "Move selected items to Stage before final action.")
             }
@@ -163,6 +181,45 @@ private struct EmptyReviewView: View {
         .padding(.bottom, compact ? 110 : 20)
         .frame(maxWidth: 620, alignment: .leading)
         .frame(maxWidth: .infinity, alignment: .topLeading)
+    }
+}
+
+private struct FilterMenu: View {
+    @EnvironmentObject private var store: FileReviewStore
+
+    var body: some View {
+        Menu {
+            Button {
+                store.clearFilter()
+            } label: {
+                Label("All Files", systemImage: store.selectedCategory == nil ? "checkmark" : "tray.full")
+            }
+
+            Divider()
+
+            ForEach(ReviewFile.Category.allCases, id: \.self) { category in
+                Button {
+                    store.selectedCategory = category
+                } label: {
+                    Label(category.rawValue, systemImage: store.selectedCategory == category ? "checkmark" : iconName(for: category))
+                }
+            }
+        } label: {
+            Label(store.filterTitle, systemImage: "line.3.horizontal.decrease.circle")
+        }
+        .disabled(store.files.isEmpty)
+    }
+
+    private func iconName(for category: ReviewFile.Category) -> String {
+        switch category {
+        case .image: "photo"
+        case .video: "video"
+        case .document: "doc.text"
+        case .archive: "archivebox"
+        case .duplicate: "doc.on.doc"
+        case .large: "externaldrive"
+        case .other: "doc"
+        }
     }
 }
 

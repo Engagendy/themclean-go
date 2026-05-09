@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0534466BF55968DE75253718 /* LargeFilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FECE0FA7DBE0F6E5B56296 /* LargeFilesView.swift */; };
 		307A1FD997BA22341E3C18E6 /* FileRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA93ACDFAE43FE810C87B33 /* FileRow.swift */; };
 		55EF0B556D99C27CD7C178C7 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D3F96504E0832B8F733F59 /* DashboardView.swift */; };
 		6C7A02569D519082B32D6F74 /* ReviewFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE34E7B8D4063749221E49AE /* ReviewFile.swift */; };
@@ -16,6 +17,7 @@
 		C2FC2EB788613A5C54CC6916 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8690193A0D5494A267D0FE0 /* SplashView.swift */; };
 		D2EAF162E59A3155D2E0A459 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F27CFB5D6529178AEA61AC9 /* ReviewView.swift */; };
 		D54429CBE90326FE7E2303CB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05ACC54A1C3D5D9DBEA1F4B /* SettingsView.swift */; };
+		E248790FE7D86395BDDAD1A6 /* FilePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E0C7A2CFBBC7EFFFE5B68A /* FilePreviewView.swift */; };
 		E81C8B200F90F962F4DE3225 /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D8F19E5189C0BD54F0402C /* AppAppearance.swift */; };
 		EA800DC319D450A76B86908C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25B71910A7659517D57A1885 /* Assets.xcassets */; };
 		F3B1F409B65118E9EAB7F5F9 /* FileReviewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66351E893F9C36A5E91B86C /* FileReviewStore.swift */; };
@@ -23,13 +25,15 @@
 
 /* Begin PBXFileReference section */
 		0D2237627153EA07D391F002 /* theMCleanGo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = theMCleanGo.entitlements; sourceTree = "<group>"; };
+		15E0C7A2CFBBC7EFFFE5B68A /* FilePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePreviewView.swift; sourceTree = "<group>"; };
 		25B71910A7659517D57A1885 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F27CFB5D6529178AEA61AC9 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
+		32FECE0FA7DBE0F6E5B56296 /* LargeFilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeFilesView.swift; sourceTree = "<group>"; };
 		52FBA2D6E5DAE8D5448817BB /* StageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageView.swift; sourceTree = "<group>"; };
 		5908889392A7BBC1E43B87E3 /* theMCleanGoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theMCleanGoApp.swift; sourceTree = "<group>"; };
 		81771D039EFA7724EC83D2CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9EA93ACDFAE43FE810C87B33 /* FileRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileRow.swift; sourceTree = "<group>"; };
-		9F230FB4597978E78B14BDCF /* theMCleanGo.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = theMCleanGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F230FB4597978E78B14BDCF /* theMClean Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "theMClean Go.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05ACC54A1C3D5D9DBEA1F4B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B66351E893F9C36A5E91B86C /* FileReviewStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileReviewStore.swift; sourceTree = "<group>"; };
 		B8D8F19E5189C0BD54F0402C /* AppAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
@@ -44,7 +48,9 @@
 			isa = PBXGroup;
 			children = (
 				D1D3F96504E0832B8F733F59 /* DashboardView.swift */,
+				15E0C7A2CFBBC7EFFFE5B68A /* FilePreviewView.swift */,
 				9EA93ACDFAE43FE810C87B33 /* FileRow.swift */,
+				32FECE0FA7DBE0F6E5B56296 /* LargeFilesView.swift */,
 				2F27CFB5D6529178AEA61AC9 /* ReviewView.swift */,
 				EAD3E98FC9F5D245031872D6 /* RootView.swift */,
 				B05ACC54A1C3D5D9DBEA1F4B /* SettingsView.swift */,
@@ -74,7 +80,7 @@
 		510F101332F12195D0A8B895 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9F230FB4597978E78B14BDCF /* theMCleanGo.app */,
+				9F230FB4597978E78B14BDCF /* theMClean Go.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -135,7 +141,7 @@
 			packageProductDependencies = (
 			);
 			productName = theMCleanGo;
-			productReference = 9F230FB4597978E78B14BDCF /* theMCleanGo.app */;
+			productReference = 9F230FB4597978E78B14BDCF /* theMClean Go.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -145,7 +151,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 2640;
 				TargetAttributes = {
 					2F753737D16F3A2489666804 = {
 						DevelopmentTeam = 7JM77223V5;
@@ -189,8 +195,10 @@
 			files = (
 				E81C8B200F90F962F4DE3225 /* AppAppearance.swift in Sources */,
 				55EF0B556D99C27CD7C178C7 /* DashboardView.swift in Sources */,
+				E248790FE7D86395BDDAD1A6 /* FilePreviewView.swift in Sources */,
 				F3B1F409B65118E9EAB7F5F9 /* FileReviewStore.swift in Sources */,
 				307A1FD997BA22341E3C18E6 /* FileRow.swift in Sources */,
+				0534466BF55968DE75253718 /* LargeFilesView.swift in Sources */,
 				6C7A02569D519082B32D6F74 /* ReviewFile.swift in Sources */,
 				D2EAF162E59A3155D2E0A459 /* ReviewView.swift in Sources */,
 				6CFEADEC0714080FFD0BDE45 /* RootView.swift in Sources */,
@@ -262,6 +270,7 @@
 				DEVELOPMENT_TEAM = 7JM77223V5;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -283,6 +292,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -347,6 +357,7 @@
 				DEVELOPMENT_TEAM = 7JM77223V5;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -361,6 +372,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;

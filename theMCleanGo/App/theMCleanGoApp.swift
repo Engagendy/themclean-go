@@ -4,27 +4,36 @@ import SwiftUI
 struct TheMCleanGoApp: App {
     @StateObject private var store = FileReviewStore()
     @AppStorage("appAppearance") private var appAppearance = AppAppearance.system.rawValue
-    @State private var isShowingSplash = true
+    @State private var isReady = false
+    @State private var didScheduleStartup = false
 
     var body: some Scene {
         WindowGroup {
             ZStack {
-                RootView()
-                    .environmentObject(store)
-                    .opacity(isShowingSplash ? 0 : 1)
-
-                if isShowingSplash {
+                if isReady {
+                    RootView()
+                        .environmentObject(store)
+                        .transition(.opacity)
+                } else {
                     SplashView()
                         .transition(.opacity)
                 }
             }
             .preferredColorScheme(AppAppearance(rawValue: appAppearance)?.colorScheme)
-            .task {
-                try? await Task.sleep(for: .milliseconds(850))
-                withAnimation(.easeOut(duration: 0.22)) {
-                    isShowingSplash = false
+            .onAppear {
+                guard !didScheduleStartup else { return }
+                didScheduleStartup = true
+                DispatchQueue.main.async {
+                    showApp()
                 }
             }
+        }
+    }
+
+    private func showApp() {
+        guard !isReady else { return }
+        withAnimation(.easeOut(duration: 0.12)) {
+            isReady = true
         }
     }
 }

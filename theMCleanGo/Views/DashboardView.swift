@@ -13,13 +13,12 @@ struct DashboardView: View {
                 metrics
                 charts
                 storageAccessNote
-                categorySection
-                largestFilesSection
+                dashboardLists
             }
-            .padding(.horizontal, 20)
+            .padding(.horizontal, horizontalSizeClass == .compact ? 20 : 28)
             .padding(.top, 18)
             .padding(.bottom, 110)
-            .frame(maxWidth: 760, alignment: .leading)
+            .frame(maxWidth: contentMaxWidth, alignment: .leading)
             .frame(maxWidth: .infinity, alignment: .topLeading)
         }
         .navigationTitle("Dashboard")
@@ -29,23 +28,30 @@ struct DashboardView: View {
                 Button {
                     showingImporter = true
                 } label: {
-                    Label("Analyze", systemImage: "folder.badge.plus")
+                    Label("Scan", systemImage: "folder.badge.plus")
                 }
             }
         }
     }
 
+    private var contentMaxWidth: CGFloat {
+        horizontalSizeClass == .compact ? 760 : 1160
+    }
+
     private var hero: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Image(systemName: "link.circle.fill")
-                .font(.system(size: 42, weight: .semibold))
-                .foregroundStyle(.green)
-
             VStack(alignment: .leading, spacing: 8) {
-                Text("Analyze files you choose")
-                    .font(horizontalSizeClass == .compact ? .title.bold() : .largeTitle.bold())
-                    .fixedSize(horizontal: false, vertical: true)
-                Text("iPhone and iPad apps cannot scan the whole device storage. Choose a folder or files from Files, and theMClean Go will analyze what you grant.")
+                HStack(alignment: .center, spacing: 12) {
+                    Image(systemName: "link.circle.fill")
+                        .font(.system(size: horizontalSizeClass == .compact ? 34 : 40, weight: .semibold))
+                        .foregroundStyle(.green)
+
+                    Text("Scan a Files location")
+                        .font(horizontalSizeClass == .compact ? .title.bold() : .largeTitle.bold())
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+
+                Text("Press Scan, then choose On My iPhone, On My iPad, iCloud Drive, Downloads, or another folder from Files.")
                     .font(.body)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
@@ -54,7 +60,7 @@ struct DashboardView: View {
             Button {
                 showingImporter = true
             } label: {
-                Label("Choose Files or Folder", systemImage: "folder.badge.plus")
+                Label("Scan Files Location", systemImage: "folder.badge.plus")
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(.borderedProminent)
@@ -66,6 +72,13 @@ struct DashboardView: View {
         LazyVGrid(columns: metricColumns, spacing: 12) {
             DashboardMetric(title: "Reviewed", value: "\(store.files.count)", detail: "files")
             DashboardMetric(title: "Potential", value: ByteCountFormatter.string(fromByteCount: store.totalSize, countStyle: .file), detail: "selected location")
+            NavigationLink {
+                LargeFilesView()
+            } label: {
+                DashboardMetric(title: "Large Files", value: "\(store.largeFiles.count)", detail: ByteCountFormatter.string(fromByteCount: store.largeFilesSize, countStyle: .file))
+            }
+            .buttonStyle(.plain)
+            .disabled(store.largeFiles.isEmpty)
             DashboardMetric(title: "Selected", value: ByteCountFormatter.string(fromByteCount: store.selectedSize, countStyle: .file), detail: "\(store.selectedFiles.count) files")
             DashboardMetric(title: "Stage", value: ByteCountFormatter.string(fromByteCount: store.stageSize, countStyle: .file), detail: "\(store.stagedFiles.count) files")
         }
@@ -73,9 +86,9 @@ struct DashboardView: View {
 
     private var metricColumns: [GridItem] {
         if horizontalSizeClass == .compact {
-            return [GridItem(.flexible())]
+            return [GridItem(.flexible()), GridItem(.flexible())]
         }
-        return [GridItem(.flexible()), GridItem(.flexible())]
+        return [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     }
 
     @ViewBuilder
@@ -87,39 +100,75 @@ struct DashboardView: View {
             if store.categories.isEmpty {
                 EmptyDashboardRow(title: "No chart yet", detail: "Choose files or a folder to build the storage chart.")
             } else {
-                VStack(alignment: .leading, spacing: 18) {
-                    Chart(store.categories, id: \.category) { item in
-                        SectorMark(
-                            angle: .value("Size", item.size),
-                            innerRadius: .ratio(0.58),
-                            angularInset: 1.5
-                        )
-                        .foregroundStyle(by: .value("Category", item.category.rawValue))
-                    }
-                    .chartLegend(position: .bottom, alignment: .leading)
-                    .frame(height: horizontalSizeClass == .compact ? 220 : 260)
-
-                    Chart(store.categories, id: \.category) { item in
-                        BarMark(
-                            x: .value("Size", item.size),
-                            y: .value("Category", item.category.rawValue)
-                        )
-                        .foregroundStyle(.green)
-                    }
-                    .chartXAxis {
-                        AxisMarks { value in
-                            AxisGridLine()
-                            AxisValueLabel {
-                                if let bytes = value.as(Int64.self) {
-                                    Text(ByteCountFormatter.string(fromByteCount: bytes, countStyle: .file))
-                                }
-                            }
-                        }
-                    }
-                    .frame(height: max(160, CGFloat(store.categories.count) * 34))
-                }
+                chartContent
                 .padding()
                 .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var chartContent: some View {
+        if horizontalSizeClass == .compact {
+            VStack(alignment: .leading, spacing: 18) {
+                categoryDonutChart
+                categoryBarChart
+            }
+        } else {
+            HStack(alignment: .top, spacing: 22) {
+                categoryDonutChart
+                    .frame(maxWidth: 430)
+                categoryBarChart
+                    .frame(maxWidth: .infinity)
+            }
+        }
+    }
+
+    private var categoryDonutChart: some View {
+        Chart(store.categories, id: \.category) { item in
+            SectorMark(
+                angle: .value("Size", item.size),
+                innerRadius: .ratio(0.58),
+                angularInset: 1.5
+            )
+            .foregroundStyle(by: .value("Category", item.category.rawValue))
+        }
+        .chartLegend(position: .bottom, alignment: .leading)
+        .frame(height: horizontalSizeClass == .compact ? 220 : 300)
+    }
+
+    private var categoryBarChart: some View {
+        Chart(store.categories, id: \.category) { item in
+            BarMark(
+                x: .value("Size", item.size),
+                y: .value("Category", item.category.rawValue)
+            )
+            .foregroundStyle(.green)
+        }
+        .chartXAxis {
+            AxisMarks { value in
+                AxisGridLine()
+                AxisValueLabel {
+                    if let bytes = value.as(Int64.self) {
+                        Text(ByteCountFormatter.string(fromByteCount: bytes, countStyle: .file))
+                    }
+                }
+            }
+        }
+        .frame(height: max(horizontalSizeClass == .compact ? 160 : 300, CGFloat(store.categories.count) * 34))
+    }
+
+    @ViewBuilder
+    private var dashboardLists: some View {
+        if horizontalSizeClass == .compact {
+            categorySection
+            largestFilesSection
+        } else {
+            HStack(alignment: .top, spacing: 28) {
+                categorySection
+                    .frame(maxWidth: .infinity, alignment: .topLeading)
+                largestFilesSection
+                    .frame(maxWidth: .infinity, alignment: .topLeading)
             }
         }
     }
@@ -128,7 +177,7 @@ struct DashboardView: View {
         VStack(alignment: .leading, spacing: 8) {
             Label("Storage access", systemImage: "lock.shield")
                 .font(.headline)
-            Text("For App Store safety and iOS privacy, the app only analyzes user-selected Files locations. To review more storage, choose a broader folder such as iCloud Drive, On My iPhone, Downloads, or a provider folder that exposes its files.")
+            Text("iOS requires you to grant access first. Choose On My iPhone or On My iPad in the Files picker to scan local documents, or choose iCloud Drive, Downloads, or a provider folder.")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
@@ -166,26 +215,39 @@ struct DashboardView: View {
     @ViewBuilder
     private var largestFilesSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Largest files")
-                .font(.title3.bold())
+            HStack {
+                Text("Largest files")
+                    .font(.title3.bold())
+
+                Spacer()
+
+                NavigationLink("View all") {
+                    LargeFilesView()
+                }
+                .disabled(store.largeFiles.isEmpty)
+            }
 
             if store.largestFiles.isEmpty {
                 EmptyDashboardRow(title: "Nothing to show", detail: "Large files appear here after analysis.")
             } else {
                 ForEach(store.largestFiles) { file in
-                    HStack {
-                        VStack(alignment: .leading, spacing: 3) {
-                            Text(file.name)
-                                .lineLimit(1)
-                            Text(file.category.rawValue)
-                                .font(.caption)
+                    NavigationLink {
+                        FilePreviewView(file: file)
+                    } label: {
+                        HStack {
+                            VStack(alignment: .leading, spacing: 3) {
+                                Text(file.name)
+                                    .lineLimit(1)
+                                Text(file.category.rawValue)
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                            Spacer()
+                            Text(file.formattedSize)
                                 .foregroundStyle(.secondary)
                         }
-                        Spacer()
-                        Text(file.formattedSize)
-                            .foregroundStyle(.secondary)
+                        .padding(.vertical, 8)
                     }
-                    .padding(.vertical, 8)
                     Divider()
                 }
             }
@@ -204,9 +266,9 @@ private struct DashboardMetric: View {
                 .font(.caption)
                 .foregroundStyle(.secondary)
             Text(value)
-                .font(.headline)
+                .font(.headline.weight(.semibold))
                 .lineLimit(1)
-                .minimumScaleFactor(0.7)
+                .minimumScaleFactor(0.55)
             Text(detail)
                 .font(.caption2)
                 .foregroundStyle(.tertiary)

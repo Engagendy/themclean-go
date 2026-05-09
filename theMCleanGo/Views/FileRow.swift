@@ -5,40 +5,40 @@ struct FileRow: View {
     let toggle: () -> Void
 
     var body: some View {
-        Button(action: toggle) {
-            HStack(spacing: 14) {
-                Image(systemName: iconName)
-                    .font(.title3)
-                    .foregroundStyle(.green)
-                    .frame(width: 30)
+        HStack(spacing: 14) {
+            Image(systemName: iconName)
+                .font(.title3)
+                .foregroundStyle(.green)
+                .frame(width: 30)
 
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(file.name)
-                        .font(.body.weight(.medium))
-                        .lineLimit(1)
-                    HStack(spacing: 8) {
-                        Text(file.category.rawValue)
-                        Text(file.formattedSize)
-                        if let modified = file.modifiedAt {
-                            Text(modified, style: .date)
-                        }
+            VStack(alignment: .leading, spacing: 4) {
+                Text(file.name)
+                    .font(.body.weight(.medium))
+                    .lineLimit(1)
+                HStack(spacing: 8) {
+                    Text(file.category.rawValue)
+                    Text(file.formattedSize)
+                    if let modified = file.modifiedAt {
+                        Text(modified, style: .date)
                     }
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
                 }
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            }
 
-                Spacer()
+            Spacer()
 
-                RiskBadge(risk: file.risk)
+            RiskBadge(risk: file.risk)
 
+            Button(action: toggle) {
                 Image(systemName: file.isSelected ? "checkmark.circle.fill" : "circle")
                     .font(.title3)
                     .foregroundStyle(file.isSelected ? .green : .secondary)
             }
-            .contentShape(Rectangle())
-            .padding(.vertical, 8)
+            .buttonStyle(.plain)
         }
-        .buttonStyle(.plain)
+        .contentShape(Rectangle())
+        .padding(.vertical, 8)
     }
 
     private var iconName: String {
