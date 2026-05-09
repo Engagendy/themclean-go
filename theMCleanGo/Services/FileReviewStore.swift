@@ -21,6 +21,23 @@ final class FileReviewStore: ObservableObject {
         files.reduce(0) { $0 + $1.size }
     }
 
+    var stageSize: Int64 {
+        stagedFiles.reduce(0) { $0 + $1.size }
+    }
+
+    var categories: [(category: ReviewFile.Category, count: Int, size: Int64)] {
+        ReviewFile.Category.allCases.compactMap { category in
+            let matching = files.filter { $0.category == category }
+            guard !matching.isEmpty else { return nil }
+            return (category, matching.count, matching.reduce(0) { $0 + $1.size })
+        }
+        .sorted { $0.size > $1.size }
+    }
+
+    var largestFiles: [ReviewFile] {
+        Array(files.prefix(5))
+    }
+
     func importURLs(_ urls: [URL]) {
         isScanning = true
         defer { isScanning = false }

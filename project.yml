@@ -14,10 +14,13 @@ targets:
     platform: iOS
     sources:
       - path: theMCleanGo
+    resources:
+      - path: theMCleanGo/Resources/Assets.xcassets
     settings:
       PRODUCT_BUNDLE_IDENTIFIER: com.engagendy.theMCleanGo
       PRODUCT_NAME: theMClean Go
       INFOPLIST_FILE: theMCleanGo/Resources/Info.plist
+      ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
       TARGETED_DEVICE_FAMILY: "1,2"
       SUPPORTS_MACCATALYST: false
       CODE_SIGN_ENTITLEMENTS: theMCleanGo/Resources/theMCleanGo.entitlements
@@ -28,6 +31,9 @@ targets:
         CFBundleShortVersionString: "$(MARKETING_VERSION)"
         CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
         LSApplicationCategoryType: public.app-category.utilities
+        UILaunchScreen:
+          UIImageName: LaunchMark
+          UIColorName: LaunchBackground
         UISupportedInterfaceOrientations:
           - UIInterfaceOrientationPortrait
           - UIInterfaceOrientationLandscapeLeft

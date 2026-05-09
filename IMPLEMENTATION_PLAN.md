@@ -9,7 +9,7 @@
 - [x] Add review list with category, size, date, risk, and selection.
 - [x] Add Stage view with restore/remove.
 - [x] Add settings shell.
-- [ ] Add app icon and launch branding.
+- [x] Add app icon and launch branding.
 - [ ] Add screenshots for README and App Store.
 
 ## Phase 2 - Review Depth
