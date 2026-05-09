@@ -1,0 +1,367 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		307A1FD997BA22341E3C18E6 /* FileRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA93ACDFAE43FE810C87B33 /* FileRow.swift */; };
+		6C7A02569D519082B32D6F74 /* ReviewFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE34E7B8D4063749221E49AE /* ReviewFile.swift */; };
+		6CA997A8B1BD7007FA8E9E9B /* StageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FBA2D6E5DAE8D5448817BB /* StageView.swift */; };
+		6CFEADEC0714080FFD0BDE45 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD3E98FC9F5D245031872D6 /* RootView.swift */; };
+		C04213C2DB1DBD415975101C /* theMCleanGoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5908889392A7BBC1E43B87E3 /* theMCleanGoApp.swift */; };
+		D2EAF162E59A3155D2E0A459 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F27CFB5D6529178AEA61AC9 /* ReviewView.swift */; };
+		D54429CBE90326FE7E2303CB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05ACC54A1C3D5D9DBEA1F4B /* SettingsView.swift */; };
+		F3B1F409B65118E9EAB7F5F9 /* FileReviewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66351E893F9C36A5E91B86C /* FileReviewStore.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0D2237627153EA07D391F002 /* theMCleanGo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = theMCleanGo.entitlements; sourceTree = "<group>"; };
+		2F27CFB5D6529178AEA61AC9 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
+		52FBA2D6E5DAE8D5448817BB /* StageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageView.swift; sourceTree = "<group>"; };
+		5908889392A7BBC1E43B87E3 /* theMCleanGoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theMCleanGoApp.swift; sourceTree = "<group>"; };
+		81771D039EFA7724EC83D2CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9EA93ACDFAE43FE810C87B33 /* FileRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileRow.swift; sourceTree = "<group>"; };
+		9F230FB4597978E78B14BDCF /* theMCleanGo.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = theMCleanGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B05ACC54A1C3D5D9DBEA1F4B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B66351E893F9C36A5E91B86C /* FileReviewStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileReviewStore.swift; sourceTree = "<group>"; };
+		BE34E7B8D4063749221E49AE /* ReviewFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewFile.swift; sourceTree = "<group>"; };
+		EAD3E98FC9F5D245031872D6 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		2A66C734B81A299D5469A0CB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9EA93ACDFAE43FE810C87B33 /* FileRow.swift */,
+				2F27CFB5D6529178AEA61AC9 /* ReviewView.swift */,
+				EAD3E98FC9F5D245031872D6 /* RootView.swift */,
+				B05ACC54A1C3D5D9DBEA1F4B /* SettingsView.swift */,
+				52FBA2D6E5DAE8D5448817BB /* StageView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3A553574731EAD1110B2998E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				5908889392A7BBC1E43B87E3 /* theMCleanGoApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		3A8843467A66894756189E26 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BE34E7B8D4063749221E49AE /* ReviewFile.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		510F101332F12195D0A8B895 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9F230FB4597978E78B14BDCF /* theMCleanGo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9E7A90DAAEDE871BCB9AC955 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				81771D039EFA7724EC83D2CE /* Info.plist */,
+				0D2237627153EA07D391F002 /* theMCleanGo.entitlements */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B03C74DCF9054942EE05F24A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B66351E893F9C36A5E91B86C /* FileReviewStore.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		EAA6BC4633254B444809FA93 = {
+			isa = PBXGroup;
+			children = (
+				FB49ED03B87AE48DCC40BCD1 /* theMCleanGo */,
+				510F101332F12195D0A8B895 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FB49ED03B87AE48DCC40BCD1 /* theMCleanGo */ = {
+			isa = PBXGroup;
+			children = (
+				3A553574731EAD1110B2998E /* App */,
+				3A8843467A66894756189E26 /* Models */,
+				9E7A90DAAEDE871BCB9AC955 /* Resources */,
+				B03C74DCF9054942EE05F24A /* Services */,
+				2A66C734B81A299D5469A0CB /* Views */,
+			);
+			path = theMCleanGo;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2F753737D16F3A2489666804 /* theMCleanGo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2836E331DDA7F24E9932EB3B /* Build configuration list for PBXNativeTarget "theMCleanGo" */;
+			buildPhases = (
+				575A872F6235B909C03604E5 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = theMCleanGo;
+			packageProductDependencies = (
+			);
+			productName = theMCleanGo;
+			productReference = 9F230FB4597978E78B14BDCF /* theMCleanGo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BD97DCA0B67F8C2E56B86C0F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					2F753737D16F3A2489666804 = {
+						DevelopmentTeam = 7JM77223V5;
+					};
+				};
+			};
+			buildConfigurationList = B8E9A4FC3EABAEB8C752CA25 /* Build configuration list for PBXProject "theMCleanGo" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = EAA6BC4633254B444809FA93;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 510F101332F12195D0A8B895 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2F753737D16F3A2489666804 /* theMCleanGo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		575A872F6235B909C03604E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3B1F409B65118E9EAB7F5F9 /* FileReviewStore.swift in Sources */,
+				307A1FD997BA22341E3C18E6 /* FileRow.swift in Sources */,
+				6C7A02569D519082B32D6F74 /* ReviewFile.swift in Sources */,
+				D2EAF162E59A3155D2E0A459 /* ReviewView.swift in Sources */,
+				6CFEADEC0714080FFD0BDE45 /* RootView.swift in Sources */,
+				D54429CBE90326FE7E2303CB /* SettingsView.swift in Sources */,
+				6CA997A8B1BD7007FA8E9E9B /* StageView.swift in Sources */,
+				C04213C2DB1DBD415975101C /* theMCleanGoApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		15EC93CAC99957465E6664EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = theMCleanGo/Resources/theMCleanGo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = theMCleanGo/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.engagendy.theMCleanGo;
+				PRODUCT_NAME = "theMClean Go";
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		16269FC3B366B7BF0D4C992E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 7JM77223V5;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		1DD645C2A192C61C524CD1BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = theMCleanGo/Resources/theMCleanGo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = theMCleanGo/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.engagendy.theMCleanGo;
+				PRODUCT_NAME = "theMClean Go";
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		97D98C13295F3FC0251AF8B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 7JM77223V5;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2836E331DDA7F24E9932EB3B /* Build configuration list for PBXNativeTarget "theMCleanGo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DD645C2A192C61C524CD1BE /* Debug */,
+				15EC93CAC99957465E6664EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B8E9A4FC3EABAEB8C752CA25 /* Build configuration list for PBXProject "theMCleanGo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16269FC3B366B7BF0D4C992E /* Debug */,
+				97D98C13295F3FC0251AF8B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BD97DCA0B67F8C2E56B86C0F /* Project object */;
+}

@@ -1,0 +1,39 @@
+name: theMCleanGo
+options:
+  bundleIdPrefix: com.engagendy
+  deploymentTarget:
+    iOS: "17.0"
+settings:
+  MARKETING_VERSION: 0.1.0
+  CURRENT_PROJECT_VERSION: 1
+  DEVELOPMENT_TEAM: 7JM77223V5
+packages: {}
+targets:
+  theMCleanGo:
+    type: application
+    platform: iOS
+    sources:
+      - path: theMCleanGo
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.engagendy.theMCleanGo
+      PRODUCT_NAME: theMClean Go
+      INFOPLIST_FILE: theMCleanGo/Resources/Info.plist
+      TARGETED_DEVICE_FAMILY: "1,2"
+      SUPPORTS_MACCATALYST: false
+      CODE_SIGN_ENTITLEMENTS: theMCleanGo/Resources/theMCleanGo.entitlements
+    info:
+      path: theMCleanGo/Resources/Info.plist
+      properties:
+        CFBundleDisplayName: theMClean Go
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
+        LSApplicationCategoryType: public.app-category.utilities
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
