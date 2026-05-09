@@ -51,6 +51,12 @@ Suggested subtitle: **File review for iPhone and iPad**
 
 Suggested category: **Utilities**
 
+Bundle ID: `com.engagendy.theMCleanGo`
+
+Display name: **theMClean Go**
+
+Version: `1.0.0`
+
 The review notes should clearly say:
 
 > theMClean Go only scans files and folders selected by the user through the Files picker. It does not scan iOS system caches, other apps, private app containers, or hidden operating system storage.

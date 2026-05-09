@@ -33,7 +33,7 @@
 		5908889392A7BBC1E43B87E3 /* theMCleanGoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theMCleanGoApp.swift; sourceTree = "<group>"; };
 		81771D039EFA7724EC83D2CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9EA93ACDFAE43FE810C87B33 /* FileRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileRow.swift; sourceTree = "<group>"; };
-		9F230FB4597978E78B14BDCF /* theMClean Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "theMClean Go.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F230FB4597978E78B14BDCF /* theMCleanGo.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = theMCleanGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05ACC54A1C3D5D9DBEA1F4B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B66351E893F9C36A5E91B86C /* FileReviewStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileReviewStore.swift; sourceTree = "<group>"; };
 		B8D8F19E5189C0BD54F0402C /* AppAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
@@ -80,7 +80,7 @@
 		510F101332F12195D0A8B895 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9F230FB4597978E78B14BDCF /* theMClean Go.app */,
+				9F230FB4597978E78B14BDCF /* theMCleanGo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -141,7 +141,7 @@
 			packageProductDependencies = (
 			);
 			productName = theMCleanGo;
-			productReference = 9F230FB4597978E78B14BDCF /* theMClean Go.app */;
+			productReference = 9F230FB4597978E78B14BDCF /* theMCleanGo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -151,7 +151,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 2640;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					2F753737D16F3A2489666804 = {
 						DevelopmentTeam = 7JM77223V5;
@@ -270,7 +270,6 @@
 				DEVELOPMENT_TEAM = 7JM77223V5;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -286,13 +285,12 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 1.0.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -357,7 +355,6 @@
 				DEVELOPMENT_TEAM = 7JM77223V5;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -367,12 +364,11 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 1.0.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
