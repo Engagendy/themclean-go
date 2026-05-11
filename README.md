@@ -1,10 +1,10 @@
 # theMClean Go
 
-theMClean Go is the iPhone and iPad companion to theMClean. It is not a system cleaner like the Mac app. iOS and iPadOS sandboxing means the app can only review files and folders the user explicitly selects from the Files app.
+theMClean Go is the mobile companion to theMClean. It is not a system cleaner like the Mac app. iOS and iPadOS sandboxing means the app can only review files and folders the user explicitly selects from the Files app.
 
 ## Product Direction
 
-- iPad-first file review workspace with a compact iPhone layout.
+- Tablet-first file review workspace with a compact phone layout.
 - Import files or folders from Files.
 - Group review candidates by type, size, and risk.
 - Move selected items to Stage before final action.
@@ -41,13 +41,13 @@ Build from Terminal:
 xcodebuild -project theMCleanGo.xcodeproj -scheme theMCleanGo -destination 'generic/platform=iOS Simulator' build
 ```
 
-Or open `theMCleanGo.xcodeproj` in Xcode and run on iPhone or iPad simulator.
+Or open `theMCleanGo.xcodeproj` in Xcode and run on a simulator.
 
 ## App Store Positioning
 
 Suggested name: **theMClean Go**
 
-Suggested subtitle: **File review for iPhone and iPad**
+Suggested subtitle: **File review and cleanup**
 
 Suggested category: **Utilities**
 

@@ -7,7 +7,7 @@ final class FileReviewStore: ObservableObject {
     @Published private(set) var files: [ReviewFile] = []
     @Published private(set) var stagedFiles: [ReviewFile] = []
     @Published var isScanning = false
-    @Published var lastScanSummary = "Press Scan and choose On My iPhone, On My iPad, or another Files location."
+    @Published var lastScanSummary = "Press Scan and choose local device storage, iCloud Drive, Downloads, or another Files location."
     @Published var selectedCategory: ReviewFile.Category?
     private var scannedAppStorage = false
     private var activeSecurityScopedURLs: [URL] = []
@@ -102,7 +102,7 @@ final class FileReviewStore: ObservableObject {
 
         guard !imported.isEmpty else {
             if files.isEmpty {
-                lastScanSummary = "No files were found in the app storage. Press Scan to choose On My iPhone, On My iPad, or another Files location."
+                lastScanSummary = "No files were found in the app storage. Press Scan to choose local device storage, iCloud Drive, Downloads, or another Files location."
             }
             return
         }

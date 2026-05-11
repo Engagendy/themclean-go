@@ -51,7 +51,7 @@ struct DashboardView: View {
                         .fixedSize(horizontal: false, vertical: true)
                 }
 
-                Text("Press Scan, then choose On My iPhone, On My iPad, iCloud Drive, Downloads, or another folder from Files.")
+                Text("Press Scan, then choose local device storage, iCloud Drive, Downloads, or another folder from Files.")
                     .font(.body)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
@@ -177,7 +177,7 @@ struct DashboardView: View {
         VStack(alignment: .leading, spacing: 8) {
             Label("Storage access", systemImage: "lock.shield")
                 .font(.headline)
-            Text("iOS requires you to grant access first. Choose On My iPhone or On My iPad in the Files picker to scan local documents, or choose iCloud Drive, Downloads, or a provider folder.")
+            Text("iOS requires you to grant access first. Choose local device storage in the Files picker to scan local documents, or choose iCloud Drive, Downloads, or a provider folder.")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)

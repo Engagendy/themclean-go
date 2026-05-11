@@ -29,7 +29,7 @@ struct SettingsView: View {
             Section("About") {
                 LabeledContent("App", value: "theMClean Go")
                 LabeledContent("Version", value: "0.1.0")
-                Text("Designed for iPhone and iPad file review. It cannot scan iOS system caches or other apps.")
+                Text("Designed for local file review. It cannot scan system caches or other apps.")
                     .foregroundStyle(.secondary)
             }
         }

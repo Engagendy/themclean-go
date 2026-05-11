@@ -152,7 +152,7 @@ private struct EmptyReviewView: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text("Scan files to review")
                     .font(.title2.bold())
-                Text("Choose On My iPhone, On My iPad, Downloads, iCloud Drive, or another folder from Files.")
+                Text("Choose local device storage, Downloads, iCloud Drive, or another folder from Files.")
                     .font(.body)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
@@ -170,7 +170,7 @@ private struct EmptyReviewView: View {
             .controlSize(.large)
 
             VStack(alignment: .leading, spacing: 12) {
-                OnboardingRow(icon: "folder", title: "Pick from Files", text: "Select On My iPhone, On My iPad, Downloads, or selected documents.")
+                OnboardingRow(icon: "folder", title: "Pick from Files", text: "Select local device storage, Downloads, or selected documents.")
                 OnboardingRow(icon: "line.3.horizontal.decrease.circle", title: "Review by size", text: "Sort through large files, archives, media, and documents.")
                 OnboardingRow(icon: "tray.and.arrow.down", title: "Use Stage first", text: "Move selected items to Stage before final action.")
             }

@@ -9,7 +9,7 @@
 - Content rights: No third-party content
 - Encryption: None of the algorithms mentioned / no non-exempt encryption
 - Price: Free
-- Platforms: iPhone and iPad
+- Platforms: iOS and iPadOS
 - Version: 1.0.0
 - Build: 1
 - Support URL: https://github.com/Engagendy/themclean-go/issues
@@ -18,19 +18,19 @@
 
 ## Promotional Text
 
-Review files from Files, find large items, preview common formats, and stage selected files before cleanup on iPhone and iPad.
+Review files from the Files app, find large items, preview common formats, and stage selected files before cleanup.
 
 ## Subtitle
 
-File review for iPhone and iPad
+File review and cleanup
 
 ## Keywords
 
-cleaner,files,storage,review,large files,cleanup,documents,iphone,ipad,organizer
+cleaner,files,storage,review,large files,cleanup,documents,organizer
 
 ## Description
 
-theMClean Go helps iPhone and iPad users review files and folders they choose from the Files app.
+theMClean Go helps users review files and folders they choose from the Files app.
 
 Because iOS and iPadOS protect device storage, theMClean Go does not scan hidden system areas, app caches, private app containers, or other apps. Instead, it gives users a focused review workspace for files they explicitly select.
 
@@ -41,9 +41,9 @@ Key features:
 - Preview common file types such as images, text, PDFs, audio, and video
 - Filter review results by category
 - Select items and move them to Stage before final cleanup decisions
-- Use an iPad-optimized dashboard with charts and file summaries
+- Use a tablet-optimized dashboard with charts and file summaries
 
-theMClean Go is built for people who want a safer way to inspect Downloads, iCloud Drive folders, On My iPhone or On My iPad locations, project folders, media exports, archives, and documents before deciding what to keep.
+theMClean Go is built for people who want a safer way to inspect Downloads, iCloud Drive folders, local device storage, project folders, media exports, archives, and documents before deciding what to keep.
 
 ## App Review Notes
 
@@ -53,7 +53,7 @@ To test the app:
 
 1. Launch the app.
 2. Tap Scan.
-3. In the Files picker, choose files or a folder from On My iPhone, On My iPad, iCloud Drive, Downloads, or another available provider.
+3. In the Files picker, choose files or a folder from local device storage, iCloud Drive, Downloads, or another available provider.
 4. Review the dashboard summary, charts, categories, and largest files.
 5. Open the Review tab to filter, preview, and select files.
 6. Move selected files to Stage.
@@ -78,7 +78,93 @@ Not applicable.
 Suggested test devices:
 
 - iPhone 16 Pro Max running the latest available iOS
-- iPad running the latest available iPadOS
+- iPad Pro M4 running the latest available iPadOS
+
+## Guideline 2.1 Resolution Center Reply
+
+Hello App Review Team,
+
+Thank you for the update. Please find the requested information below.
+
+1. Screen recording
+
+Screen recording: [ATTACH VIDEO IN APP STORE CONNECT OR PROVIDE REVIEW-ACCESSIBLE LINK]
+
+The recording was captured on a physical device running the latest available operating system. It begins with launching the app and shows the typical user flow:
+
+- Launch theMClean Go
+- Tap Scan
+- Choose files or a folder from the iOS/iPadOS Files picker
+- Review the dashboard summary, file count, total size, categories, charts, and largest files
+- Open the Review tab
+- Filter and preview reviewed files
+- Select files
+- Move selected files to Stage
+- Open Stage
+- Restore or remove staged items from the app's review list
+- Open Settings and review the available preferences
+
+The app does not include account registration, login, account deletion, paid content, subscriptions, in-app purchases, user-generated content, reporting/blocking mechanisms, App Tracking Transparency, or prompts for location, contacts, camera, Photos library access, microphone, or other sensitive device capabilities. The only user-granted access involved in the core flow is selecting files or folders through the standard Files picker.
+
+2. Tested devices and operating systems
+
+Before submission, the app was tested on the following physical devices:
+
+- [DEVICE MODEL], [iOS VERSION]
+- [DEVICE MODEL], [iPadOS VERSION]
+
+3. App purpose and target audience
+
+theMClean Go is a Utilities app for users who want to review files they choose from the Files app before deciding what to keep. It helps users inspect Downloads, iCloud Drive folders, local device storage, project folders, media exports, archives, and documents.
+
+The problem it solves is that users often need a safer way to understand selected file storage without giving an app broad access to their device. Because iOS and iPadOS protect device storage, theMClean Go does not scan hidden system areas, app caches, private app containers, Photos library contents, Messages attachments, Mail storage, browser caches, or other apps. Instead, users explicitly select files or folders through the Files picker, and the app analyzes that selected content locally.
+
+The value provided is a focused review workspace that shows file counts, total size, categories, large files, previews for common file types, filters, and a Stage area where selected items can be reviewed before final cleanup decisions.
+
+4. Setup and access instructions
+
+No login credentials are required.
+
+To access the app's main features:
+
+- Install and launch the app.
+- Tap Scan.
+- In the Files picker, choose files or a folder from local device storage, iCloud Drive, Downloads, or another available file provider.
+- Review the Dashboard summary, charts, categories, and largest files.
+- Open Review to filter, preview, and select files.
+- Move selected files to Stage.
+- Open Stage to restore items or remove them from the app's review list.
+- Open Settings to adjust appearance, large-file threshold, and Stage preferences.
+
+Sample files are optional. Any files or folder available through the Files app can be used for review.
+
+5. External services, tools, or platforms
+
+None. theMClean Go does not use external services, data providers, authentication services, payment processors, AI services, analytics platforms, advertising SDKs, tracking SDKs, or server APIs for its core functionality. File analysis happens locally on device.
+
+6. Regional differences
+
+There are no regional differences. theMClean Go functions consistently across all regions where it is available.
+
+7. Regulated industry or protected third-party material
+
+Not applicable. The app is not in a highly regulated industry and does not include protected third-party material. Users review only files or folders they explicitly choose from their own Files app locations.
+
+Please let us know if any additional information is needed.
+
+## Guideline 5.2.5 Resolution Center Reply
+
+Hello App Review Team,
+
+Thank you for the update.
+
+We reviewed the app metadata and removed the Apple product terms from the subtitle. The subtitle has been changed from "File review for iPhone and iPad" to "File review and cleanup" to avoid confusion with Apple products or services.
+
+We also reviewed the promotional text, description, and keywords and removed unnecessary product-name usage there as well.
+
+Please continue the review with the updated metadata.
+
+Thank you.
 
 ## Privacy
 
