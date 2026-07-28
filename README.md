@@ -16,6 +16,7 @@ theMClean Go is the mobile companion to theMClean. It is not a system cleaner li
 - Native SwiftUI iOS/iPadOS app.
 - File and folder picker.
 - Local scan of user-selected files.
+- Photos library scan (photos and videos) with permission, including guarded deletion of staged items through the system confirmation dialog.
 - Large file, image, video, document, archive, and other categories.
 - Review list with size, modified date, risk, and selection.
 - Stage view with restore/remove actions.

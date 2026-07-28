@@ -28,6 +28,11 @@ struct ReviewFile: Identifiable, Hashable {
     let risk: Risk
     var isSelected: Bool
     var isStaged: Bool
+    var assetIdentifier: String? = nil
+
+    var isPhotoLibraryItem: Bool {
+        assetIdentifier != nil
+    }
 
     var formattedSize: String {
         ByteCountFormatter.string(fromByteCount: size, countStyle: .file)

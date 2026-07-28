@@ -45,6 +45,18 @@ struct StageView: View {
                 } footer: {
                     Text("This first mobile build tracks Stage decisions inside the app. Direct file deletion will stay guarded behind explicit confirmation in a later phase.")
                 }
+
+                if !store.stagedPhotoLibraryFiles.isEmpty {
+                    Section {
+                        Button(role: .destructive) {
+                            Task { await store.deleteStagedPhotosFromLibrary() }
+                        } label: {
+                            Label("Delete \(store.stagedPhotoLibraryFiles.count) staged items from Photos", systemImage: "trash")
+                        }
+                    } footer: {
+                        Text("iOS asks you to confirm before anything is deleted. Deleted items stay in Photos > Recently Deleted for 30 days.")
+                    }
+                }
             }
         }
         .navigationTitle("Stage")

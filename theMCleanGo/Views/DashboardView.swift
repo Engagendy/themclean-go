@@ -24,11 +24,17 @@ struct DashboardView: View {
         .navigationTitle("Dashboard")
         .navigationBarTitleDisplayMode(horizontalSizeClass == .compact ? .inline : .large)
         .toolbar {
-            ToolbarItem(placement: .primaryAction) {
+            ToolbarItemGroup(placement: .primaryAction) {
                 Button {
                     showingImporter = true
                 } label: {
-                    Label("Scan", systemImage: "folder.badge.plus")
+                    Label("Scan Files", systemImage: "folder.badge.plus")
+                }
+
+                Button {
+                    Task { await store.scanPhotoLibrary() }
+                } label: {
+                    Label("Scan Photos", systemImage: "photo.on.rectangle.angled")
                 }
             }
         }
@@ -51,7 +57,7 @@ struct DashboardView: View {
                         .fixedSize(horizontal: false, vertical: true)
                 }
 
-                Text("Press Scan, then choose local device storage, iCloud Drive, Downloads, or another folder from Files.")
+                Text("Press Scan Files to choose local device storage, iCloud Drive, Downloads, or another folder from Files. Or scan your Photos library to review photos and videos.")
                     .font(.body)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
@@ -65,6 +71,16 @@ struct DashboardView: View {
             }
             .buttonStyle(.borderedProminent)
             .controlSize(.large)
+
+            Button {
+                Task { await store.scanPhotoLibrary() }
+            } label: {
+                Label("Scan Photos & Media", systemImage: "photo.on.rectangle.angled")
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.bordered)
+            .controlSize(.large)
+            .disabled(store.isScanning)
         }
     }
 

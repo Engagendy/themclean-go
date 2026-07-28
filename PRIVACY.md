@@ -2,7 +2,7 @@
 
 Effective date: May 9, 2026
 
-theMClean Go is designed to review files and folders that you explicitly choose from the iOS or iPadOS Files app. The app does not require an account and does not upload your files to a server.
+theMClean Go is designed to review files and folders that you explicitly choose from the iOS or iPadOS Files app, and photos and videos from your Photos library if you grant access. The app does not require an account and does not upload your files to a server.
 
 ## Data Collection
 
@@ -28,7 +28,13 @@ theMClean Go can only access files and folders that you select through the syste
 
 Selected files are reviewed locally on your device to calculate file size, category, modified date, and preview availability. Files are not uploaded, copied to a server, or shared with the developer.
 
-iOS and iPadOS sandboxing prevents the app from scanning hidden system storage, private app containers, other apps, browser caches, Photos library content, Messages attachments, Mail storage, or operating system caches.
+iOS and iPadOS sandboxing prevents the app from scanning hidden system storage, private app containers, other apps, browser caches, Messages attachments, Mail storage, or operating system caches.
+
+## Photos Access
+
+If you use Scan Photos & Media, theMClean Go asks for permission to access your Photos library through the standard iOS permission prompt. You can grant access to your full library or only selected photos.
+
+Photos and videos are reviewed locally on your device to calculate size, type, and date. They are never uploaded or shared. If you choose to delete staged photos, iOS shows its own confirmation dialog before anything is removed, and deleted items remain in Photos > Recently Deleted for 30 days. You can revoke Photos access at any time in Settings > Privacy & Security > Photos.
 
 ## Network Use
 

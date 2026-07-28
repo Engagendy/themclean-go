@@ -21,10 +21,20 @@ struct ReviewView: View {
             }
 
             ToolbarItemGroup(placement: .primaryAction) {
-                Button {
-                    showingImporter = true
+                Menu {
+                    Button {
+                        showingImporter = true
+                    } label: {
+                        Label("Scan Files Location", systemImage: "folder.badge.plus")
+                    }
+
+                    Button {
+                        Task { await store.scanPhotoLibrary() }
+                    } label: {
+                        Label("Scan Photos & Media", systemImage: "photo.on.rectangle.angled")
+                    }
                 } label: {
-                    Label("Scan", systemImage: "folder.badge.plus")
+                    Label("Scan", systemImage: "plus.magnifyingglass")
                 }
 
                 Button {
@@ -163,14 +173,23 @@ private struct EmptyReviewView: View {
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
 
-            Button("Scan") {
-                showingImporter = true
+            HStack(spacing: 12) {
+                Button("Scan Files") {
+                    showingImporter = true
+                }
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+
+                Button("Scan Photos") {
+                    Task { await store.scanPhotoLibrary() }
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.large)
             }
-            .buttonStyle(.borderedProminent)
-            .controlSize(.large)
 
             VStack(alignment: .leading, spacing: 12) {
                 OnboardingRow(icon: "folder", title: "Pick from Files", text: "Select local device storage, Downloads, or selected documents.")
+                OnboardingRow(icon: "photo.on.rectangle.angled", title: "Scan Photos & Media", text: "Review photos and videos from your Photos library by size.")
                 OnboardingRow(icon: "line.3.horizontal.decrease.circle", title: "Review by size", text: "Sort through large files, archives, media, and documents.")
                 OnboardingRow(icon: "tray.and.arrow.down", title: "Use Stage first", text: "Move selected items to Stage before final action.")
             }

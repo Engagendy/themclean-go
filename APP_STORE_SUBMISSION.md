@@ -10,15 +10,15 @@
 - Encryption: None of the algorithms mentioned / no non-exempt encryption
 - Price: Free
 - Platforms: iOS and iPadOS
-- Version: 1.0.0
-- Build: 1
+- Version: 1.1.0
+- Build: 2
 - Support URL: https://github.com/Engagendy/themclean-go/issues
 - Marketing URL: https://github.com/Engagendy/themclean-go
 - Privacy Policy URL: https://github.com/Engagendy/themclean-go/blob/main/PRIVACY.md
 
 ## Promotional Text
 
-Review files from the Files app, find large items, preview common formats, and stage selected files before cleanup.
+Review files from the Files app and photos and videos from your Photos library, find large items, preview and play media, and stage selected items before cleanup.
 
 ## Subtitle
 
@@ -26,17 +26,20 @@ File review and cleanup
 
 ## Keywords
 
-cleaner,files,storage,review,large files,cleanup,documents,organizer
+cleaner,files,storage,review,large files,cleanup,photos,videos,organizer
 
 ## Description
 
-theMClean Go helps users review files and folders they choose from the Files app.
+theMClean Go helps users review files and folders they choose from the Files app, plus photos and videos from their Photos library if they grant access.
 
 Because iOS and iPadOS protect device storage, theMClean Go does not scan hidden system areas, app caches, private app containers, or other apps. Instead, it gives users a focused review workspace for files they explicitly select.
 
 Key features:
 
 - Scan files or folders selected from the Files app
+- Scan the Photos library (with permission) to review photos and videos by size
+- Play videos with fullscreen and Picture in Picture before deciding what to keep
+- Delete staged photos and videos through the standard iOS confirmation dialog
 - Review total size, file count, categories, and large files
 - Preview common file types such as images, text, PDFs, audio, and video
 - Filter review results by category
@@ -44,6 +47,13 @@ Key features:
 - Use a tablet-optimized dashboard with charts and file summaries
 
 theMClean Go is built for people who want a safer way to inspect Downloads, iCloud Drive folders, local device storage, project folders, media exports, archives, and documents before deciding what to keep.
+
+## What's New in 1.1.0
+
+- Scan your Photos library (with permission) to review photos and videos alongside files
+- See a live progress bar while large libraries are scanned
+- Play videos in the preview, with fullscreen and Picture in Picture
+- Stage or delete items directly from the preview screen, guarded by the iOS confirmation dialog
 
 ## App Review Notes
 
@@ -58,10 +68,11 @@ To test the app:
 5. Open the Review tab to filter, preview, and select files.
 6. Move selected files to Stage.
 7. Open Stage to restore or remove staged items from the app's review list.
+8. Optionally tap Scan Photos & Media on the Dashboard, grant Photos access, review photos and videos by size, play a video, and stage or delete items. Deletion is confirmed by the iOS system dialog.
 
 Important sandbox note:
 
-theMClean Go only scans files and folders selected by the user through the Files picker. It does not scan iOS system caches, other apps, private app containers, hidden operating system storage, Photos library contents, Messages attachments, Mail storage, or browser caches.
+theMClean Go only scans files and folders selected by the user through the Files picker, and the Photos library only after the user grants access through the standard iOS permission prompt. It does not scan iOS system caches, other apps, private app containers, hidden operating system storage, Messages attachments, Mail storage, or browser caches. Photo deletion always goes through the iOS system confirmation dialog, and deleted items remain in Photos > Recently Deleted for 30 days.
 
 External services:
 

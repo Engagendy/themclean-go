@@ -24,6 +24,8 @@
 	<string>public.app-category.utilities</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>theMClean Go scans your photo library so you can review large photos and videos and free up space. Everything stays on your device.</string>
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIColorName</key>

@@ -1,5 +1,6 @@
 import AVKit
 import PDFKit
+import Photos
 import SwiftUI
 import UIKit
 import UniformTypeIdentifiers
@@ -7,12 +8,15 @@ import UniformTypeIdentifiers
 struct FilePreviewView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var store: FileReviewStore
     let file: ReviewFile
+    @State private var isDeleting = false
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 18) {
                 preview
+                actions
                 details
             }
             .padding()
@@ -28,9 +32,11 @@ struct FilePreviewView: View {
                 }
             }
 
-            ToolbarItem(placement: .primaryAction) {
-                ShareLink(item: file.url) {
-                    Label("Open", systemImage: "square.and.arrow.up")
+            if !file.isPhotoLibraryItem {
+                ToolbarItem(placement: .primaryAction) {
+                    ShareLink(item: file.url) {
+                        Label("Open", systemImage: "square.and.arrow.up")
+                    }
                 }
             }
         }
@@ -38,7 +44,9 @@ struct FilePreviewView: View {
 
     @ViewBuilder
     private var preview: some View {
-        if isImage, let image = loadImage() {
+        if let assetIdentifier = file.assetIdentifier {
+            PhotoAssetPreview(assetIdentifier: assetIdentifier, iconName: iconName)
+        } else if isImage, let image = loadImage() {
             Image(uiImage: image)
                 .resizable()
                 .scaledToFit()
@@ -73,6 +81,41 @@ struct FilePreviewView: View {
         }
     }
 
+    @ViewBuilder
+    private var actions: some View {
+        if !file.isStaged {
+            HStack(spacing: 12) {
+                Button {
+                    store.stage(file)
+                    dismiss()
+                } label: {
+                    Label("Move to Stage", systemImage: "tray.and.arrow.down")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+
+                if file.isPhotoLibraryItem {
+                    Button(role: .destructive) {
+                        Task {
+                            isDeleting = true
+                            defer { isDeleting = false }
+                            if await store.deletePhotoFromLibrary(file) {
+                                dismiss()
+                            }
+                        }
+                    } label: {
+                        Label("Delete", systemImage: "trash")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.bordered)
+                    .controlSize(.large)
+                    .disabled(isDeleting)
+                }
+            }
+        }
+    }
+
     private var details: some View {
         VStack(alignment: .leading, spacing: 14) {
             DetailRow(title: "Name", value: file.name)
@@ -88,12 +131,19 @@ struct FilePreviewView: View {
                 DetailRow(title: "Modified", value: modifiedAt.formatted(date: .abbreviated, time: .shortened))
             }
 
-            DetailRow(title: "Path", value: file.url.path)
+            DetailRow(title: "Path", value: file.isPhotoLibraryItem ? "Photos Library" : file.url.path)
 
+            if file.isPhotoLibraryItem {
+                Text("This item lives in your Photos library. Stage it in Review, then delete staged photos from the Stage tab — iOS will ask you to confirm.")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            } else {
             Text("Use Open to share, save, or open the file in another app. iOS does not provide a public API to reveal the exact file location in Files.")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
+            }
         }
         .padding()
         .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
@@ -174,6 +224,108 @@ struct FilePreviewView: View {
         "java", "kt", "kts", "go", "rs", "c", "h", "cpp", "hpp", "m", "mm", "sh",
         "zsh", "bash", "env", "ini", "conf", "toml", "lock"
     ]
+}
+
+private struct PhotoAssetPreview: View {
+    let assetIdentifier: String
+    let iconName: String
+    @State private var image: UIImage?
+    @State private var player: AVPlayer?
+    @State private var failed = false
+
+    var body: some View {
+        Group {
+            if let player {
+                PlayerPreview(player: player)
+                    .frame(height: 320)
+                    .background(.black, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+                    .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+            } else if let image {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity)
+                    .background(.black.opacity(0.04), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            } else if failed {
+                ContentUnavailableView(
+                    "Preview not available",
+                    systemImage: iconName,
+                    description: Text("This item could not be loaded from the Photos library.")
+                )
+                .frame(maxWidth: .infinity, minHeight: 260)
+                .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            } else {
+                ProgressView()
+                    .frame(maxWidth: .infinity, minHeight: 260)
+                    .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+            }
+        }
+        .task(id: assetIdentifier) {
+            await loadPreview()
+        }
+        .onDisappear {
+            player?.pause()
+        }
+    }
+
+    private func loadPreview() async {
+        guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [assetIdentifier], options: nil).firstObject else {
+            failed = true
+            return
+        }
+
+        if asset.mediaType == .video {
+            if let item = await loadPlayerItem(for: asset) {
+                player = AVPlayer(playerItem: item)
+                return
+            }
+        }
+
+        image = await loadImage(for: asset)
+        failed = image == nil
+    }
+
+    private func loadPlayerItem(for asset: PHAsset) async -> AVPlayerItem? {
+        await withCheckedContinuation { continuation in
+            let options = PHVideoRequestOptions()
+            options.deliveryMode = .automatic
+            options.isNetworkAccessAllowed = true
+            PHImageManager.default().requestPlayerItem(forVideo: asset, options: options) { item, _ in
+                continuation.resume(returning: item)
+            }
+        }
+    }
+
+    private func loadImage(for asset: PHAsset) async -> UIImage? {
+        await withCheckedContinuation { continuation in
+            let options = PHImageRequestOptions()
+            options.deliveryMode = .highQualityFormat
+            options.isNetworkAccessAllowed = true
+            PHImageManager.default().requestImage(
+                for: asset,
+                targetSize: CGSize(width: 1600, height: 1600),
+                contentMode: .aspectFit,
+                options: options
+            ) { image, _ in
+                continuation.resume(returning: image)
+            }
+        }
+    }
+}
+
+private struct PlayerPreview: UIViewControllerRepresentable {
+    let player: AVPlayer
+
+    func makeUIViewController(context: Context) -> AVPlayerViewController {
+        let controller = AVPlayerViewController()
+        controller.player = player
+        controller.allowsPictureInPicturePlayback = true
+        return controller
+    }
+
+    func updateUIViewController(_ controller: AVPlayerViewController, context: Context) {
+        controller.player = player
+    }
 }
 
 private struct MediaPreview: UIViewControllerRepresentable {

@@ -25,6 +25,11 @@ struct RootView: View {
                 store.importURLs(urls)
             }
         }
+        .overlay {
+            if let progress = store.photoScanProgress {
+                PhotoScanOverlay(progress: progress)
+            }
+        }
     }
 
     private var compactTabs: some View {
@@ -65,6 +70,43 @@ struct RootView: View {
         case .settings:
             SettingsView()
         }
+    }
+}
+
+private struct PhotoScanOverlay: View {
+    let progress: PhotoScanProgress
+
+    var body: some View {
+        ZStack {
+            Color.black.opacity(0.3)
+                .ignoresSafeArea()
+
+            VStack(spacing: 16) {
+                if progress.total > 0 {
+                    ProgressView(value: Double(progress.completed), total: Double(progress.total))
+                        .progressViewStyle(.linear)
+                        .tint(.green)
+
+                    Text("Scanning photos and media")
+                        .font(.headline)
+
+                    Text("\(progress.completed.formatted()) of \(progress.total.formatted())")
+                        .font(.subheadline.monospacedDigit())
+                        .foregroundStyle(.secondary)
+                } else {
+                    ProgressView()
+                        .controlSize(.large)
+
+                    Text("Preparing photo library scan")
+                        .font(.headline)
+                }
+            }
+            .padding(28)
+            .frame(maxWidth: 320)
+            .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        }
+        .transition(.opacity)
+        .animation(.easeInOut(duration: 0.2), value: progress.total > 0)
     }
 }
 
